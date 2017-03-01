@@ -1,0 +1,55 @@
+local python packages 'pip install' loaded into
+/usr/local/lib/python2.7/dist-packages
+
+# wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
+# sudo cp /opt/GeoIP
+# sudo gunzip GeoLiteCity.dat.gz
+
+# sudo apt-get install nmap
+install pip
+# sudo apt-get install python-pip
+intall python nmap
+install python nmap
+# sudo pip install python-nmap
+
+install scapy + python library
+# sudo apt-get install scapy
+aircrack
+# sudo apt-get install aircrack-ng
+
+nmap command for scan example
+sudo nmap -sN -Pn -p21-25 -D10.11.12.13 -oA nmapscan 192.168.2.0/24
+
+list the modules in a python import
+import nmap
+dir(nmap)
+help(nmap)
+print nmap.__version__
+
+init a tuple of values
+var = ['my foo' for x in range(4)]
+>>> print var
+['my foo', 'my foo', 'my foo', 'my foo']
+using join (it will add source object to end of evaluated function)
+'.'.join([str(random.randint(1,254)) for x in range(4)])
+e.g. 90.123.11.34
+
+$ iwconfig
+$ iw wlan0 info
+$ iwlist wlan0 scan
+To disconnect from an AP run:
+$ sudo iw dev wlan0 disconnect
+http://ict.siit.tu.ac.th/help/iw
+$ sudo iw phy phy0 interface add mon0 type monitor
+$ sudo iw dev wlan0 del
+$ sudo ifconfig mon0 up
+$ sudo iw dev mon0 set freq 2437 
+
+$ ip route
+$ arp
+
+(aircrack-ng)
+$ sudo apt-get install aircrack-ng
+$ airmon-ng start wlan0
+
+

@@ -1,0 +1,124 @@
+update packages
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get -s install xyz-package 
+
+add a samba share (windows share) read only/read-write 
+requires samba client package (sudo apt-get install smbclient)
+sudo mount -t cifs -o username=david,password=david123 '//192.168.0.151/Shared Disk' /home/david/SharedDisk_victoria
+sudo mount -t cifs -o username=david,password=david123,rw,file_mode=0777,dir_mode=0777 '//192.168.0.151/Shared Disk' /home/david/SharedDisk_victoriaa
+add samba share -> edit file /etc/samba/smb.conf
+sudo mount -t cifs -o username=david,password=david123 //192.168.0.151/Users2 /home/david/LocalMount
+
+unmount
+sudo umount /home/david/SharedDisk_victoria
+
+Samba configuration
+add a user smbpasswd -a u1
+put this user in
+/etc/samba/smb.conf
+	security = user
+[share]
+	path = /home/u1/share
+	writeable = yes
+;	browseable = yes
+	valid users = u1
+
+show the network tree
+smbtree
+smbclient -L hostname
+smbstatus
+
+
+which cp -> shows path to prog/bin
+which tightvncserver
+
+add tightvncserver to /etc/rc.local to run on startup
+
+df -h -> disk usage
+sudo fdisk -l -> disk partition layout
+
+-> find and list included libs
+find /usr | grep -i gpio
+
+run in background and dont terminate (no hang up)
+hohup <proc name> 
+
+output stdout/stderr to file log append to log
+cmd >> log 2>&1
+Redirecting stderr
+ grep hosts /private/etc/* 2> error.log
+redirecting both stderr and stdout
+ grep hosts /private/etc/* &> results.txt
+If you need to pass stderr over a pipe along with stdout you can do that by redirecting the stderr stream (file descriptor #2) to stdout (file descriptor #1)
+ grep hosts /private/etc/* 2>&1 | grep 'Permission denied' > results.txt
+tail -f filename
+
+python (-u option)
+python -u /home/pi/share/pi_kitchen/logger.py -t 300 > /var/tmp/logger.txt 2>&1 &
+
+
+shutting down
+sudo reboot
+sudo shutdown -h now
+
+# lvm2
+list physical and logical configs
+pvs
+vgs
+lvs
+
+# sudo mount -t cifs //192.168.2.201/backup /home/david/mnt
+# sudo umount /home/david/mnt
+
+groups - lists current group membership for user
+# sudo groupadd k8055
+# sudo usermod -aG k8055 david
+# groups david
+
+# sudo -l
+This will show a list of allowed commands.
+# usermod -aG sudo david
+
+viewing disks and partitions
+# df -h
+
+# sudo parted
+print list -> will list all the attached disks and partitions
+# sudo fdisk -l  -> will do the same
+
+mounting an inserted usb disk
+# sudo fdisk -l
+# sudo mkdir /home/pi/mnt/usb
+# sudo chmod -R 755 usb
+# sudo mount -t vfat /dev/sdxn /home/pi/mnt/usb  < this is not working?**
+
+mounting a share folder on /home/pi/share
+# sudo mount -t cifs //192.168.2.220/share /home/david/mnt/2
+
+change ownership/group
+# sudo chown root <dir file>
+# sudo chgrp root <dir file>
+
+
+Nmap
+# nmap -sn 192.168.2.0/24  - simple host up scan
+
+wireless tools
+# iwconfig
+# sudo iwlist scan
+
+
+# find / -ctime -1 > /tmp/changed-file-list.txt
+
+# [CTRL-Z]
+[2]+  Stopped                 find / -ctime -1 > /tmp/changed-file-list.txt
+
+# bg
+
+# jobs
+[1]   Running                 bash download-file.sh &
+[2]-  Running                 evolution &
+[3]+  Done                    nautilus .
+
+

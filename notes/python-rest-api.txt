@@ -1,0 +1,39 @@
+
+-Thingspeak api
+POST https://api.thingspeak.com/update.json
+     api_key=XXXXXXXXXXXXXXXX
+     field1=73
+
+-requests documentation
+http://docs.python-requests.org/en/latest/user/quickstart/
+
+import requests     
+import json
+
+url = "https://api.thingspeak.com/update.json"
+payload = {'field1' : '73', 'api_key' : '9FI66NV71NXWDE67'}
+headers = {'content-type': 'application/json'}
+r = requests.post(url, data=json.dumps(payload), headers=headers)
+
+r.status_code
+r.headers
+print r.text
+print r.url
+
+url = "https://api.thingspeak.com/channels/51817/feeds.json"
+payload = {'results' : 10}
+r = requests.get(url, params = payload)
+
+api_req = {}
+api_req['field4'] = '{0}'.format(data.value)
+api_req['api_key'] = '9FI66NV71NXWDE67'
+r = requests.post(url, data=json.dumps(api_req), headers=headers)
+
+
+-interactive session write history
+import readline
+readline.write_history_file('/home/david/history')
+
+list installed modules
+sudo pip list
+
